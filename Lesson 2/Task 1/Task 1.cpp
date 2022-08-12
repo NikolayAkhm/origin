@@ -23,7 +23,7 @@ int main()
         int num;
         std::cout << "Enter month number " << "\n";
         std::cin >> num;
-        std::cout << Month::;
+        std::cout 
     }
     return 0;
 }
