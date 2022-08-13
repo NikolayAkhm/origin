@@ -8,7 +8,7 @@ struct bank_account
     int account_number;
     double money;
 };
-void increment_age(bank_account& b)
+void new_balance(bank_account& b)
 {
     double num;
     std::cout << "Enter new balance\n";
@@ -25,7 +25,7 @@ int main()
     std::cin >> first.account_number;
     std::cout << "Enter amount of money\n";
     std::cin >> first.money;
-    increment_age(first);
+    new_balance(first);
 
     std::cout << "Your bank account: " << first.first_name << ", " << first.account_number << ", " << first.money ;
     return 0;
