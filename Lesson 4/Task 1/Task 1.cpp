@@ -37,25 +37,53 @@ public:
 		street_ = street;
 		houseNumber_ = houseNumber;
 		apartmentNumber_ = apartmentNumber;
-	};
-}
+	}
+	Addres()
+	{
+		city_ = 1 ;
+		street_ = 1;
+		houseNumber_ = 1;
+		apartmentNumber_ = 1;
+	}
+
+};
 
 int main()
 {
 	std::ifstream fin("in.txt");
 	int size;
-	fin >> size; // Открыли файл и поместили первый символ в размер первого массива
 	if (!fin.is_open())
 	{
 		std::cout << "error\n";
 	}
-	int* int_ptr1;
-	int_ptr1 = create_array(sizeArr1);
-	int buf1;
-	for (int i = sizeArr1 - 1; i > -1; i--)
+	else
 	{
-		fin >> buf1;
-		int_ptr1[i] = buf1;
+		fin >> size;
+		Addres* arr = new Addres[size];
+
+		for (int i = 0; i < size; i++)
+		{
+			std::string stringBuf;
+			fin >> stringBuf;
+			arr[i].SetCity(stringBuf);
+			fin >> stringBuf;
+			arr[i].SetStreet(stringBuf);
+			int intBuf;
+			fin >> intBuf;
+			arr[i].SetHouseNumber(intBuf);
+			fin >> intBuf;
+			arr[i].SetApartmentNumber(intBuf);
+		}
+
+		std::ofstream fout;
+		fout.open("out.txt");
+		for (int i = 0; i < size; i++)
+		{
+			fout << arr[i].GetCity() << ", " << arr[i].GetStreet() << ", " <<
+			arr[i].GetHouseNumber() << ", " << arr[i].GetApartmentNumber() <<  "\n";
+			int intBuf;
+		}
+		delete[]arr;
 	}
-	std::cout << "arr 1" << std::endl;
+	return 0;
 }
