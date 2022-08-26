@@ -166,7 +166,7 @@ private:
 	int _B = 0;
 	int _C = 0;
 	int _D = 0;
-	std::string _name;
+	std::string _name = "Quadrangle";
 };
 
 class Right : public Triangle {
@@ -266,7 +266,7 @@ public:
 		setPB(B);
 		setPC(A);
 		setPD(B);
-		setName("Parallelogram");
+		setName("Rhombus");
 	}
 private:
 };
@@ -283,11 +283,12 @@ int main()
 	Isosceles i(1, 2, 3, 4);
 	i.PrintAll();
 
-	Quadrangle q(1, 2, 3, 4, 5, 6, 7, 8);
-	q.PrintAll();
 
 	Equilateral e(1);
 	e.PrintAll();
+
+	Quadrangle q(1, 2, 3, 4, 5, 6, 7, 8);
+	q.PrintAll();
 
 	Square s(10);
 	s.PrintAll();
@@ -295,7 +296,8 @@ int main()
 	Parallelogram p(10, 20, 20, 70);
 	p.PrintAll();
 
-
+	Rhombus h(10, 20, 60);
+	h.PrintAll();
 	
 	return 0;
 }
