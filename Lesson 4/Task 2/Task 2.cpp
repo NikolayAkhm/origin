@@ -2,7 +2,7 @@
 #include <string>
 #include <fstream>
 
-void sortingAlf(Addres* A, int n);
+
 class Addres
 {
 private:
@@ -48,7 +48,7 @@ public:
 	}
 
 };
-
+void sortingAlf(Addres* arr, int n);
 int main()
 {
 	std::ifstream fin("in.txt");
@@ -75,20 +75,7 @@ int main()
 			fin >> intBuf;
 			arr[i].SetApartmentNumber(intBuf);
 		}
-		for (int i = 0; i < size; i++)
-		{
-			std::string stringBuf;
-			fin >> stringBuf;
-			arr[i].SetCity(stringBuf);
-			fin >> stringBuf;
-			arr[i].SetStreet(stringBuf);
-			int intBuf;
-			fin >> intBuf;
-			arr[i].SetHouseNumber(intBuf);
-			fin >> intBuf;
-			arr[i].SetApartmentNumber(intBuf);
-		}
-
+		sortingAlf( arr, size);
 		std::ofstream fout;
 		fout.open("out.txt");
 		for (int i = 0; i < size; i++)
@@ -101,19 +88,18 @@ int main()
 	}
 	return 0;
 }
-void sortingAlf(Addres* A, int n)
+void sortingAlf(Addres* arr, int n)
 {
 	Addres temp;
-	int top, seek;
-	for (top = 0; top < n - 1; top++)
+	for (int i = 0; i < n - 1; i++)
 	{
-		for (seek = top + 1; seek < n; seek++)
+		for (int j = 0; j < n-1; j++)
 		{
-			if (strcmp(A[top].LastName, A[seek].LastName) > 0)
+			if (arr[j].GetCity() > arr[j+1].GetCity())
 			{
-				temp = A[top];
-				A[top] = A[seek];
-				A[seek] = temp;
+				temp = arr[j];
+				arr[j] = arr[j+1];
+				arr[j+1] = temp;
 			}
 		}
 	}
